@@ -1,15 +1,26 @@
 $(function(){
     
+    /* Añadimos atributo id con apellido 
+     * Cambiamos Nombre Apellido 1 Apellido2 por Victoriano Sevillano Vega
+     * Aplicamos un efecto cualquiera al cargarse
+     * Al hacer clic sobre el, aplivamos el mismo efecto
+     */
     $("h1").attr("id", "sevillano")
     .text("Examen jQuery. Marzo de 2018.Victoriano Sevillano Vega")
-    .fadeOut("slow")
-    .fadeIn()
+    .ready(function() {
+        efectoCarga($(this));
+    })
     .on("click", function(){
-        $(this).fadeOut().fadeIn();
+        efectoCarga($(this));
     });
-    
+
+    /* Aplicamos al input textarea del div example nuestro nombre */
     $(".example textarea").val("Victoriano Sevillano Vega");
     
+    let efectoCarga = function(selector) {
+        $(selector).fadeOut().fadeIn();
+    }
+
     /* Sube y baja el h3 de .domtree */
     let subeYBaja = function() {
         $(".domtree h3").slideUp().slideDown();
